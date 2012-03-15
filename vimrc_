@@ -1,0 +1,126 @@
+" Initialization {
+  set nocompatible
+  set shortmess=atI
+  filetype off
+  call pathogen#runtime_append_all_bundles()
+  call pathogen#helptags()
+  filetype plugin indent on
+  au GUIEnter * simalt ~x
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" }
+
+" Settings {
+  set magic
+  set hidden
+  set number
+  set gdefault
+  set nojoinspaces
+  set ambiwidth=double
+
+  set hlsearch
+  set incsearch
+
+  set showmatch
+  set matchtime=2
+
+  set autoindent
+  set copyindent
+
+  set ignorecase
+  set smartcase
+
+  set nobackup
+  set noswapfile
+
+  set clipboard+=unnamed
+  set whichwrap=b,s,<,>,[,]
+
+  set smarttab
+  set expandtab
+  set tabstop=4
+  set shiftwidth=4
+  set softtabstop=4
+  set backspace=indent,eol,start
+
+  set guioptions=
+  set cmdheight=1
+  set vb t_vb=
+  set noerrorbells
+  set novisualbell
+  set laststatus=2
+  set guifont=Microsoft_YaHei_Mono:h10:cANSI
+  set viminfo='20,n$vimruntiME\\_viminfo
+  set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&fileencoding}\ %c:%l/%L%)
+" }
+
+" Map Config {
+  let mapleader=","
+
+  nmap <silent> er :tabnew $MYVIMRC<CR>
+  nmap <silent> sr :so $MYVIMRC<CR>
+  nnoremap ; :
+  map tn :tabnext<CR>
+  map tp :tabprev<CR>
+  map te :tabnew<CR>
+  map tc :tabclose<CR>
+  map <up> <nop>
+  map <down> <nop>
+  map <left> <nop>
+  map <right> <nop>
+  map <C-h> <C-w>h
+  map <C-j> <C-w>j
+  map <C-k> <C-w>k
+  map <C-l> <C-w>l
+" }
+
+" Colo and Syntax {
+  colorscheme molokai
+  syntax on
+" }
+
+" Functions {
+" }
+
+" Coding Settings {
+  if has("multi_byte")
+      set encoding=utf-8
+      set fileencoding=utf-8
+      set fileencodings=ucs-bom,utf-8,cp932,euc-jp,latin1
+      set termencoding=utf-8
+      set formatoptions+=mM
+
+      if v:lang =~? '^\(zh\)\|\(ja\)\|\(ko\)'
+          set ambiwidth=double
+      endif
+      if has("win32")
+          source $VIMRUNTIME/delmenu.vim
+          source $VIMRUNTIME/menu.vim
+          language messages zh_CN.utf-8
+      endif
+  else
+      echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
+  endif
+" }
+
+" Plugin {
+" NERDTree
+  map <silent> <F1> :NERDTreeMirror<CR>
+  map <silent> <F2> :NERDTreeToggle<CR>
+
+" TagList
+  map <silent> <F3> :silent! Tlist<CR>
+  let Tlist_Use_Right_Window=1
+  let Tlist_File_Fold_Auto_Close=1
+  let Tlist_Exit_OnlyWindow=1
+  let Tlist_Use_SingleClick=1
+
+" xpTemplate
+  let g:xptemplate_key = '<Tab>'
+  let g:xptemplate_vars = "author=getrix&email=dotkeh@gmail.com"
+" Ctags
+  set tags=D:/Project/tags;
+
+" ZenCoding
+  let g:user_zen_expandabbr_key='<c-e>'
+  "let g:use_zen_complete_tag=1
+" }
