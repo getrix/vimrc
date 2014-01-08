@@ -1,4 +1,4 @@
-" Initialization {
+"Initialization {
   set nocompatible
   set shortmess=atI
   filetype off
@@ -7,9 +7,9 @@
   filetype plugin indent on
   au GUIEnter * simalt ~x
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-" }
+"}
 
-" Settings {
+"Settings {
   set magic
   set hidden
   set number
@@ -51,9 +51,9 @@
   set guifont=Microsoft_YaHei_Mono:h10:cANSI
   set viminfo='20,n$vimruntiME\\_viminfo
   set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&fileencoding}\ %c:%l/%L%)
-" }
+"}
 
-" Map Config {
+"Map Config {
   let mapleader=","
 
   nmap <silent> er :tabnew $MYVIMRC<CR>
@@ -71,17 +71,17 @@
   map <C-j> <C-w>j
   map <C-k> <C-w>k
   map <C-l> <C-w>l
-" }
+"}
 
-" Colo and Syntax {
+"Colo and Syntax {
   colorscheme molokai
   syntax on
-" }
+"}
 
-" Functions {
-" }
+"Functions {
+"}
 
-" Coding Settings {
+"Coding Settings {
   if has("multi_byte")
       set encoding=utf-8
       set fileencoding=utf-8
@@ -100,9 +100,9 @@
   else
       echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
   endif
-" }
+"}
 
-" Plugin {
+"Plugin {
 " NERDTree
   map <silent> <F1> :NERDTreeMirror<CR>
   map <silent> <F2> :NERDTreeToggle<CR>
@@ -123,4 +123,4 @@
 " ZenCoding
   let g:user_zen_expandabbr_key='<c-e>'
   "let g:use_zen_complete_tag=1
-" }
+"}
